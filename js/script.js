@@ -55,6 +55,14 @@ window.addEventListener('DOMContentLoaded',()=>{
         };
     }
 
+    function getZero(num) {
+        if (num >= 0 && num < 10) {
+            return `0${num}`;
+        } else {
+            return  num
+        }
+    }
+
     function setClock(selector, endtime) {
         const timer = document.querySelector(selector),
               days = timer.querySelector('#days'),
@@ -68,10 +76,10 @@ window.addEventListener('DOMContentLoaded',()=>{
 
             const t = getTimeRemaining(endtime);
 
-            days.textContent = t.days;
-            hours.textContent = t.hours;
-            minutes.textContent = t.minutes;
-            seconds.textContent = t.seconds;
+            days.textContent = getZero(t.days);
+            hours.textContent = getZero(t.hours);
+            minutes.textContent = getZero(t.minutes);
+            seconds.textContent = getZero(t.seconds);
 
             if (!t.total){
                 clearInterval(timeInterval);
